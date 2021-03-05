@@ -2,8 +2,6 @@ from dataclasses import dataclass
 from icecream import ic
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
 from urllib3.exceptions import InsecureRequestWarning
 import urllib3
 import time
@@ -115,13 +113,13 @@ class Scraping:
 
     def make_directory(self):
         """
-        画像保存用のdディレクトリを作成
+        画像保存用のディレクトリを作成
         :return:無し
         """
         # ディレクトリが存在しない場合
-        if not os.path.isdir("./顔_元画像/" + self.word):
+        if not os.path.isdir(self.word):
             # 作成
-            os.makedirs("./顔_元画像/" + self.word)
+            os.makedirs(self.word)
             ic("make directory " + self.word)
         else:
             ic("The folder : " + self.word + " already exists.")
